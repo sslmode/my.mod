@@ -34,8 +34,8 @@ service ssh restart
 
 # set repo
 wget -O /etc/apt/sources.list "https://raw.githubusercontent.com/brantbell/wulandari/srie/repo/sources.list.debian7"
-wget "http://www.dotdeb.org/dotdeb.gpg"
-wget "http://www.webmin.com/jcameron-key.asc"
+wget "http://sshvpnkinabalu.com/script/dotdeb.gpg"
+wget "http://sshvpnkinabalu.com/script/jcameron-key.asc"
 cat dotdeb.gpg | apt-key add -;rm dotdeb.gpg
 cat jcameron-key.asc | apt-key add -;rm jcameron-key.asc
 
