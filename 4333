@@ -90,10 +90,6 @@ sudo gem install lolcat
 # script
 wget -O /etc/pam.d/common-password "https://raw.githubusercontent.com/macisvpn/premiumnow/master/common-password"
 chmod +x /etc/pam.d/common-password
-# fail2ban & exim & protection
-apt-get -y install fail2ban sysv-rc-conf dnsutils dsniff zip unzip;
-wget https://github.com/jgmdev/ddos-deflate/archive/master.zip;unzip master.zip;
-cd ddos-deflate-master && ./install.sh
 service exim4 stop;sysv-rc-conf exim4 off;
 # webmin
 apt-get -y install webmin
@@ -176,7 +172,6 @@ cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
 sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
 /etc/init.d/stunnel4 restart
 cd
-
 
 # download script
 cd
