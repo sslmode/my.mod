@@ -65,6 +65,15 @@ apt-get -y install wget curl;
 echo "
 
 "
+# detail
+country=MY
+state=Terengganu
+locality=-
+organization=Interpass
+organizationalunit=InterpassGroup
+commonname=Hake
+email=-
+cd
 # text gambar
 apt-get install boxes
 
@@ -91,7 +100,7 @@ apt-get -y install webmin
 sed -i 's/ssl=1/ssl=0/g' /etc/webmin/miniserv.conf
 # dropbear
 apt-get -y install dropbear
-wget -O /etc/default/dropbear "https://raw.githubusercontent.com/macisvpn/premiumnow/master/dropbear"
+wget -O /etc/default/dropbear "http://borneovpshosting.com/autoscript/debian9/dropbear"
 echo "/bin/false" >> /etc/shells
 echo "/usr/sbin/nologin" >> /etc/shells
 # squid3
@@ -155,6 +164,19 @@ cmake ~/badvpn-1.999.127 -DBUILD_NOTHING_BY_DEFAULT=1 -DBUILD_UDPGW=1
 make install
 screen badvpn-udpgw --listen-addr 127.0.0.1:7300 > /dev/null &
 cd
+
+# install ssl
+apt-get update
+apt-get upgrade
+apt-get install stunnel4
+wget -O /etc/stunnel/stunnel.conf "https://raw.githubusercontent.com/KeningauVPS/sslmode/master/stunnel.conf"
+openssl genrsa -out key.pem 2048
+openssl req -new -x509 -key key.pem -out cert.pem -days 1095
+cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
+sed -i 's/ENABLED=0/ENABLED=1/g' /etc/default/stunnel4
+/etc/init.d/stunnel4 restart
+cd
+
 
 # download script
 cd
